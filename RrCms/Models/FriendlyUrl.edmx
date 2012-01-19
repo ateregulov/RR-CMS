@@ -1,0 +1,78 @@
+﻿<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="2.0" xmlns:edmx="http://schemas.microsoft.com/ado/2008/10/edmx">
+  <!-- EF Runtime content -->
+  <edmx:Runtime>
+    <!-- SSDL content -->
+    <edmx:StorageModels>
+      <Schema Namespace="FriendlyUrlModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+        <EntityContainer Name="FriendlyUrlModelStoreContainer">
+          <EntitySet Name="FriendlyUrl" EntityType="FriendlyUrlModel.Store.FriendlyUrl" store:Type="Tables" />
+        </EntityContainer>
+        <EntityType Name="FriendlyUrl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
+          <Property Name="FriendlyUrl" Type="nvarchar" Nullable="false" MaxLength="500" />
+          <Property Name="ControllerName" Type="nvarchar" Nullable="false" MaxLength="100" />
+          <Property Name="ActionName" Type="nvarchar" MaxLength="100" />
+          <Property Name="ContentId" Type="int" />
+        </EntityType>
+      </Schema>
+    </edmx:StorageModels>
+    <!-- CSDL content -->
+    <edmx:ConceptualModels>
+      <Schema Namespace="FriendlyUrlModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
+        <EntityContainer Name="FriendlyUrlEntities" annotation:LazyLoadingEnabled="true">
+          <EntitySet Name="FriendlyUrls" EntityType="FriendlyUrlModel.FriendlyUrl" />
+        </EntityContainer>
+        <EntityType Name="FriendlyUrl">
+          <Key>
+            <PropertyRef Name="Id" />
+          </Key>
+          <Property Name="Id" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Name="FriendlyUrl1" Type="String" Nullable="false" MaxLength="500" Unicode="true" FixedLength="false" />
+          <Property Name="ControllerName" Type="String" Nullable="false" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ActionName" Type="String" MaxLength="100" Unicode="true" FixedLength="false" />
+          <Property Name="ContentId" Type="Int32" />
+        </EntityType>
+      </Schema>
+    </edmx:ConceptualModels>
+    <!-- C-S mapping content -->
+    <edmx:Mappings>
+      <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
+        <EntityContainerMapping StorageEntityContainer="FriendlyUrlModelStoreContainer" CdmEntityContainer="FriendlyUrlEntities">
+          <EntitySetMapping Name="FriendlyUrls"><EntityTypeMapping TypeName="FriendlyUrlModel.FriendlyUrl"><MappingFragment StoreEntitySet="FriendlyUrl">
+            <ScalarProperty Name="Id" ColumnName="Id" />
+            <ScalarProperty Name="FriendlyUrl1" ColumnName="FriendlyUrl" />
+            <ScalarProperty Name="ControllerName" ColumnName="ControllerName" />
+            <ScalarProperty Name="ActionName" ColumnName="ActionName" />
+            <ScalarProperty Name="ContentId" ColumnName="ContentId" />
+          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+        </EntityContainerMapping>
+      </Mapping>
+    </edmx:Mappings>
+  </edmx:Runtime>
+  <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <Designer xmlns="http://schemas.microsoft.com/ado/2008/10/edmx">
+    <Connection>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="MetadataArtifactProcessing" Value="EmbedInOutputAssembly" />
+      </DesignerInfoPropertySet>
+    </Connection>
+    <Options>
+      <DesignerInfoPropertySet>
+        <DesignerProperty Name="ValidateOnBuild" Value="true" />
+        <DesignerProperty Name="EnablePluralization" Value="True" />
+        <DesignerProperty Name="IncludeForeignKeysInModel" Value="True" />
+        <DesignerProperty Name="CodeGenerationStrategy" Value="None" />
+      </DesignerInfoPropertySet>
+    </Options>
+    <!-- Diagram content (shape and connector positions) -->
+    <Diagrams>
+      <Diagram Name="FriendlyUrl">
+        <EntityTypeShape EntityType="FriendlyUrlModel.FriendlyUrl" Width="1.5" PointX="0.75" PointY="0.75" Height="1.7566536458333331" IsExpanded="true" />
+      </Diagram>
+    </Diagrams>
+  </Designer>
+</edmx:Edmx>
