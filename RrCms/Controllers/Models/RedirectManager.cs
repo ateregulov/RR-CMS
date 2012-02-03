@@ -14,7 +14,7 @@ namespace RrCms.Controllers.Models
 
 			using (var ctx = new FriendlyUrlEntities())
 			{
-				page = ctx.FriendlyUrls.SingleOrDefault(c => c.FriendlyUrl == friendlyUrl);
+				page = ctx.FriendlyUrls.SingleOrDefault(c => c.FriendlyUrl1 == friendlyUrl);
 				
 			}
 

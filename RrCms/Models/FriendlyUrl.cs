@@ -15,7 +15,7 @@ namespace RrCms.Models
     public partial class FriendlyUrl
     {
         public int Id { get; set; }
-        public string FriendlyUrl { get; set; }
+        public string FriendlyUrl1 { get; set; }
         public string ControllerName { get; set; }
         public string ActionName { get; set; }
         public Nullable<int> ContentId { get; set; }
