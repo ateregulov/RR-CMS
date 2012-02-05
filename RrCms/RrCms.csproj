@@ -34,9 +34,15 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="EntityFramework, Version=4.2.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
-      <SpecificVersion>False</SpecificVersion>
-      <HintPath>..\packages\EntityFramework.4.2.0.0\lib\net40\EntityFramework.dll</HintPath>
+    <Reference Include="DataAnnotationsExtensions">
+      <HintPath>..\packages\DataAnnotationsExtensions.1.0.1\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions.ClientValidation">
+      <HintPath>..\packages\DataAnnotationsExtensions.MVC3.1.0.1\lib\NETFramework40\DataAnnotationsExtensions.ClientValidation.dll</HintPath>
+    </Reference>
+    <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
+      <Private>True</Private>
+      <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
     </Reference>
     <Reference Include="Microsoft.CSharp" />
     <Reference Include="System.Data.Entity" />
@@ -67,8 +73,13 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.2.0.0\lib\NETFramework40\WebActivator.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
+    <Compile Include="Common\EmailService.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -87,16 +98,27 @@
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Article.edmx</DependentUpon>
+    <Compile Include="Models\FeedBack.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeedBack.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeedBack.cs">
+      <DependentUpon>FeedBack.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\ArticleModel.Context.cs">
+    <Compile Include="Models\FeedBack.Designer.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ArticleModel.Context.tt</DependentUpon>
+      <DependentUpon>FeedBack.edmx</DependentUpon>
     </Compile>
     <Compile Include="Models\ArticleModel.cs">
+    <Compile Include="Models\FeedBack1.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>ArticleModel.tt</DependentUpon>
+      <DependentUpon>FeedBack.tt</DependentUpon>
     </Compile>
     <Compile Include="Models\FriendlyUrl.cs">
       <DependentUpon>FriendlyUrlModel.tt</DependentUpon>
@@ -116,10 +138,12 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FriendlyUrlModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\CommonViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Article.sdf" />
+    <Content Include="App_Data\FeedBack.sdf" />
     <Content Include="App_Data\FriendlyUrl.sdf" />
     <Content Include="App_Data\Membership.sdf" />
     <Content Include="Content\images\buttons.gif" />
@@ -207,16 +231,22 @@
   </ItemGroup>
   <ItemGroup>
     <EntityDeploy Include="Models\Article.edmx">
+    <EntityDeploy Include="Models\FeedBack.edmx">
       <Generator>EntityModelCodeGenerator</Generator>
       <LastGenOutput>Article.Designer.cs</LastGenOutput>
+      <LastGenOutput>FeedBack.Designer.cs</LastGenOutput>
     </EntityDeploy>
     <None Include="Models\ArticleModel.Context.tt">
+    <None Include="Models\FeedBack.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ArticleModel.Context.cs</LastGenOutput>
+      <LastGenOutput>FeedBack.Context.cs</LastGenOutput>
     </None>
     <None Include="Models\ArticleModel.tt">
+    <None Include="Models\FeedBack.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ArticleModel.cs</LastGenOutput>
+      <LastGenOutput>FeedBack1.cs</LastGenOutput>
     </None>
     <None Include="Models\FriendlyUrlModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
@@ -227,6 +257,7 @@
       <LastGenOutput>FriendlyUrlModel.cs</LastGenOutput>
     </None>
     <Content Include="Views\Shared\_AdminLayout.cshtml" />
+    <Content Include="Views\Home\ContactUs.cshtml" />
     <Content Include="Views\Article\Index.cshtml" />
     <Content Include="Views\Article\Create.cshtml" />
     <Content Include="Views\Article\Edit.cshtml" />
