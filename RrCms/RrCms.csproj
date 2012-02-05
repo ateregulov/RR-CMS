@@ -34,6 +34,12 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="DataAnnotationsExtensions">
+      <HintPath>..\packages\DataAnnotationsExtensions.1.0.1\lib\NETFramework40\DataAnnotationsExtensions.dll</HintPath>
+    </Reference>
+    <Reference Include="DataAnnotationsExtensions.ClientValidation">
+      <HintPath>..\packages\DataAnnotationsExtensions.MVC3.1.0.1\lib\NETFramework40\DataAnnotationsExtensions.ClientValidation.dll</HintPath>
+    </Reference>
     <Reference Include="EntityFramework, Version=4.1.0.0, Culture=neutral, PublicKeyToken=b77a5c561934e089, processorArchitecture=MSIL">
       <Private>True</Private>
       <HintPath>..\packages\EntityFramework.4.1.10331.0\lib\EntityFramework.dll</HintPath>
@@ -67,8 +73,13 @@
     <Reference Include="System.Configuration" />
     <Reference Include="System.Web.Services" />
     <Reference Include="System.EnterpriseServices" />
+    <Reference Include="WebActivator">
+      <HintPath>..\packages\WebActivator.1.2.0.0\lib\NETFramework40\WebActivator.dll</HintPath>
+    </Reference>
   </ItemGroup>
   <ItemGroup>
+    <Compile Include="App_Start\RegisterClientValidationExtensions.cs" />
+    <Compile Include="Common\EmailService.cs" />
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Models\BaseController .cs" />
@@ -78,6 +89,24 @@
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
     <Compile Include="Models\AccountModels.cs" />
+    <Compile Include="Models\FeedBack.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeedBack.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeedBack.cs">
+      <DependentUpon>FeedBack.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeedBack.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeedBack.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\FeedBack1.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>FeedBack.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FriendlyUrl.cs">
       <DependentUpon>FriendlyUrlModel.tt</DependentUpon>
     </Compile>
@@ -96,9 +125,11 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FriendlyUrlModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\ViewModels\CommonViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="App_Data\FeedBack.sdf" />
     <Content Include="App_Data\FriendlyUrl.sdf" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -178,6 +209,18 @@
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
+    <EntityDeploy Include="Models\FeedBack.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>FeedBack.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\FeedBack.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FeedBack.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Models\FeedBack.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>FeedBack1.cs</LastGenOutput>
+    </None>
     <None Include="Models\FriendlyUrlModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FriendlyUrlModel.Context.cs</LastGenOutput>
@@ -186,6 +229,7 @@
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>FriendlyUrlModel.cs</LastGenOutput>
     </None>
+    <Content Include="Views\Home\ContactUs.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
