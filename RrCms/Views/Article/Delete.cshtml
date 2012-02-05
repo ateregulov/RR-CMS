@@ -1,0 +1,24 @@
+﻿@model RrCms.Models.Article
+
+@{
+    ViewBag.Title = "Admin Area - Delete article";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Delete article</h2>
+
+<h3>Are you sure you want to delete this?</h3>
+<fieldset>
+    <legend>Article Id #@Html.DisplayFor(model => model.ArticleId)</legend>
+
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Title)
+    </div>
+</fieldset>
+@using (Html.BeginForm()) {
+    <p>
+        @Html.HiddenFor(model => model.ArticleId)
+        <input type="submit" value="Delete" /> |
+        @Html.ActionLink("Back to List", "Index")
+    </p>
+}

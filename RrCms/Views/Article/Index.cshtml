@@ -1,0 +1,45 @@
+﻿@model IEnumerable<RrCms.Models.Article>
+
+@{
+    ViewBag.Title = "Admin Area - Articles";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Articles</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>Id</th>
+        <th>Order</th>
+        <th>Title</th>
+        <th>Menu title</th>
+        <th>Friendly URL</th>
+        <th>Created</th>
+        <th>Edited</th>
+        <th>EditUser</th>
+        <th>Is draft</th>
+        <th>&nbsp;</th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.ArticleId)</td>
+        <td>@Html.DisplayFor(modelItem => item.DisplayOrder)</td>
+        <td>@Html.ActionLink(item.Title, "Details", new { id = item.ArticleId }, new { title = "Show article" })</td>
+        <td>@Html.DisplayFor(modelItem => item.MenuTitle)</td>
+        <td>@Html.DisplayFor(modelItem => item.FriendlyUrl)</td>
+        <td>@Html.DisplayFor(modelItem => item.CreateDate)</td>
+        <td>@Html.DisplayFor(modelItem => item.EditDate)</td>
+        <td>@Html.DisplayFor(modelItem => item.EditUser)</td>
+        <td>@Html.DisplayFor(modelItem => item.IsDraft)</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ArticleId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ArticleId })
+        </td>
+    </tr>
+}
+
+</table>
