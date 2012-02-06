@@ -99,6 +99,24 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Article.edmx</DependentUpon>
     </Compile>
+    <Compile Include="Models\Contact.cs">
+      <DependentUpon>ContactModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\Contact.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Contact.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContactModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContactModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\ContactModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>ContactModel.tt</DependentUpon>
+    </Compile>
     <Compile Include="Models\FeedBack.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -150,6 +168,7 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="App_Data\Article.sdf" />
+    <Content Include="App_Data\Contact.sdf" />
     <Content Include="App_Data\FeedBack.sdf" />
     <Content Include="App_Data\FriendlyUrl.sdf" />
     <Content Include="App_Data\Membership.sdf" />
@@ -248,6 +267,18 @@
     <None Include="Models\ArticleModel.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
       <LastGenOutput>ArticleModel.Context.cs</LastGenOutput>
+    </None>
+    <EntityDeploy Include="Models\Contact.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>Contact.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\ContactModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ContactModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Models\ContactModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>ContactModel.cs</LastGenOutput>
     </None>
     <None Include="Models\FeedBack.Context.tt">
       <Generator>TextTemplatingFileGenerator</Generator>
