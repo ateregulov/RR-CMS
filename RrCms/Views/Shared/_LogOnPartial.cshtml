@@ -1,7 +1,7 @@
 ﻿@if(Request.IsAuthenticated) {
     <text><strong>@User.Identity.Name</strong>
     @(User.IsInRole("Editor") ? "(Editor)" : String.Empty)
-    [ @Html.ActionLink("Admin Area", "Index", "Article") ]
+    [ @Html.ActionLink("Admin Panel", "Index", "Article") ]
     [ @Html.ActionLink("Log Off", "LogOff", "Account") ]</text>
 }
 else {

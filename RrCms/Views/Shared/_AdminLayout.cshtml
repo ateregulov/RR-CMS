@@ -6,9 +6,19 @@
         <link href="@Url.Content("~/Content/jquery.cleditor.css")" rel="stylesheet" type="text/css" />
         <title>@ViewBag.Title</title>
     </head>
-<body>
-    <div>
-        @RenderBody()
-    </div>
-</body>
+    <body>
+        <header>
+            <h1>Admin Panel</h1>
+            <nav>
+                <ul id="menu">
+                    <li>@Html.ActionLink("Articles", "Index", "Article")</li>
+                    <li>@Html.ActionLink("Feedback", "Index", "Feedback")</li>
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                </ul>
+            </nav>
+        </header>
+        <div>
+            @RenderBody()
+        </div>
+    </body>
 </html>

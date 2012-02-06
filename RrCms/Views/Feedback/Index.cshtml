@@ -1,0 +1,53 @@
+﻿@model IEnumerable<RrCms.Models.FeedBack>
+
+@{
+    ViewBag.Title = "Admin Panel - Feedback";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Feedback</h2>
+
+<table>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            FullName
+        </th>
+        <th>
+            Email
+        </th>
+        <th>
+            Message
+        </th>
+        <th>
+            CreateDate
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FullName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Email)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Message)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.CreateDate)
+        </td>
+        <td>
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
