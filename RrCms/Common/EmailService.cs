@@ -1,32 +1,32 @@
 ﻿using System;
-using System.Collections.Generic;
 using System.Linq;
 using System.Net.Mail;
-using System.Web;
+using RrCms.Models;
 
 namespace RrCms.Common
 {
-    public class EmailService
+    public static class EmailService
     {
         /// <summary>
-        /// Простенький метод отправки через SMTP сервер GMail
+        /// Простенький метод отправки
         /// </summary>
         /// <param name="message"></param>
-        public void SendByGoogle(MailMessage message)
+        public  static void SendMail(MailMessage message)
         {
-            if (message != null)
+            if (message == null) return;
+            using (var db = new AdminParamEntities())
             {
+                var mailclient = new SmtpClient
+                                     {
+                                         Host = db.AdminParams.First(p => p.Name == "smtpserver").Value,
+                                         Port = Convert.ToInt32(db.AdminParams.First(p => p.Name == "smtpport").Value),
+                                         EnableSsl = Convert.ToBoolean(db.AdminParams.First(p => p.Name == "smtpssl").Value),
+                                         Credentials = new System.Net.NetworkCredential(
+                                             db.AdminParams.First(p => p.Name == "smtplogin").Value,
+                                             db.AdminParams.First(p => p.Name == "smtppass").Value)
+                                     };
 
-                var mailclient = new SmtpClient();
-                mailclient.Host = "smtp.gmail.com";
-                mailclient.Port = 587;
 
-                mailclient.EnableSsl = true;
-
-                //TODO: Хардкодим здесь либо берем из БД настройки 
-                mailclient.Credentials = new System.Net.NetworkCredential(
-                                                 "login",
-                                                 "password");
                 mailclient.Send(message);
             }
         }

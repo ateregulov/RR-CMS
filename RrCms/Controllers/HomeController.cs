@@ -1,5 +1,6 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Globalization;
 using System.Linq;
 using System.Net.Mail;
 using System.Threading;
@@ -51,14 +52,21 @@ namespace RrCms.Controllers
                 {
                     try
                     {
-                        var mailService = new EmailService();
-                        var mesage = new MailMessage(viewModel.Email, "admin@mail.com", "Contact Us Message",
-                                                             DateTime.Now.ToString() + ": " + viewModel.Message);
-                        mailService.SendByGoogle(mesage);
+                        MailMessage message;
+                        using (var db = new AdminParamEntities())
+                        {
+                            message = new MailMessage(viewModel.Email,
+                                                      db.AdminParams.First(p => p.Name == "adminemail").Value,
+                                                      db.AdminParams.First(p => p.Name == "feedbacksubject").Value,
+                                                      string.Format("From: {0}\nEmail: {1}\nDate: {2}\n\n{3}",
+                                                                    model.FullName, model.Email, model.CreateDate, model.Message)
+                                                       );
+                        }
+                        EmailService.SendMail(message);
                     }
                     catch (Exception)
                     {
-                        //write into log
+                        //todo: Обработать ошибку отправки почты
                     }
 
                 }).Start();

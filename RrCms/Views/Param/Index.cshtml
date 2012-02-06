@@ -1,0 +1,35 @@
+﻿@model IEnumerable<RrCms.Models.AdminParam>
+
+@{
+    ViewBag.Title = "Admin Panel - Parameters";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Parameters</h2>
+
+<table>
+    <tr>
+        <th>
+            Name
+        </th>
+        <th>
+            Value
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Name)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Value)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>
