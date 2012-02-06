@@ -1,8 +1,19 @@
-﻿@{
-    ViewBag.Title = "Home Page";
+﻿@model List<RrCms.Models.Article>
+@{
+    ViewBag.Title = "RR-CMS - Articles";
 }
 
-<h2>@ViewBag.Message</h2>
-<p>
-    To learn more about ASP.NET MVC visit <a href="http://asp.net/mvc" title="ASP.NET MVC Website">http://asp.net/mvc</a>.
-</p>
+@foreach (var article in Model)
+{
+        <h1>@Html.DisplayFor(a => article.Title)</h1>
+        <div>
+        @{
+            Output.Write(article.Text);
+        }
+        </div>
+        if (Request.IsAuthenticated)
+        {
+            @Html.ActionLink("Edit", "Edit", "Article", new { id = article.ArticleId }, null)
+        }
+        <hr/>
+}

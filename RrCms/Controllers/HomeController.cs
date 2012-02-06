@@ -13,11 +13,13 @@ namespace RrCms.Controllers
 {
 	public class HomeController : Controller
 	{
+	    readonly ArticleEntities _articlesDb = new ArticleEntities();
+
 		public ActionResult Index()
 		{
-			ViewBag.Message = "Welcome to ASP.NET MVC!";
+		    var articles = GetLastArticles(5);
 
-			return View();
+            return View(articles);
 		}
 
 		public ActionResult About()
@@ -65,5 +67,15 @@ namespace RrCms.Controllers
             }
             return View(viewModel);
         }
-	}
+
+        private List<Article> GetLastArticles(int count)
+        {
+            return _articlesDb.Articles
+                .OrderByDescending(a => a.CreateDate)
+                .ThenBy(a => a.DisplayOrder)
+                .Where(a => a.IsDraft != true)
+                .Take(count)
+                .ToList();
+        }
+    }
 }
