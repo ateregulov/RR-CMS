@@ -1,0 +1,29 @@
+﻿@model RrCms.Models.Contact
+
+@{
+    ViewBag.Title = "Details";
+}
+
+<h2>Details</h2>
+
+<fieldset>
+    <legend>Contact</legend>
+
+    <div class="display-label">DisplayOrder</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.DisplayOrder)
+    </div>
+
+    <div class="display-label">Text</div>
+    <div class="display-field">
+        @Html.DisplayFor(model => model.Text)
+    </div>
+</fieldset>
+<p>
+    @if (Request.IsAuthenticated)
+    {
+        @Html.ActionLink("Edit", "Edit", new {id = Model.ContactId})
+        @Html.ActionLink("Delete", "Delete", new { id = Model.ContactId })
+    }|
+    @Html.ActionLink("Back to List", "Index")
+</p>
