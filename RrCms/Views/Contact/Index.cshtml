@@ -1,13 +1,13 @@
 ﻿@model IEnumerable<RrCms.Models.Contact>
 @{
-    ViewBag.Title = "Список контактов";
+    ViewBag.Title = "Admin Panel - Contacts";
     Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
-<h2>
-    Список контактов</h2>
-    <p>
-    @Html.ActionLink("Создать контакт", "Create")
+<h2>Contacts</h2>
+<p>
+    @Html.ActionLink("Create contact", "Create")
 </p>
+
 <table>
     <tr>
         <th>

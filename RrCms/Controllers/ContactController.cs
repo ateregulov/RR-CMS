@@ -1,6 +1,4 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Data;
+﻿using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
@@ -59,16 +57,6 @@ namespace RrCms.Controllers
             catch
             {
                 return View();
-            }
-        }
-
-        //
-        // GET: /Contact/Details/5
-        public ActionResult Details(int id)
-        {
-            using (var db = new ContactEntities())
-            {
-                return View(db.Contacts.Find(id));
             }
         }
 

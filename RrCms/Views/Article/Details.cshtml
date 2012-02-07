@@ -1,24 +1,15 @@
 ﻿@model RrCms.Models.Article
-
 @{
-    Layout = null;
+    ViewBag.Title = "Details";
+    Layout = "~/Views/Shared/_Layout.cshtml";
 }
-
-<!DOCTYPE html>
-
-<html>
-<head>
-    <title>Details</title>
-</head>
-    <body>
-        <h1>@Html.DisplayFor(model => model.Title)</h1>
-        <div>
-        @{
-            Output.Write(Model.Text);
-        }
-        </div>
-        @if(Request.IsAuthenticated) {
-            @Html.ActionLink("Edit", "Edit", new { id = Model.ArticleId })
-        }
-    </body>
-</html>
+<h1>@Html.DisplayFor(model => model.Title)</h1>
+<div>
+    @{
+        Output.Write(Model.Text);
+    }
+</div>
+@if (Request.IsAuthenticated)
+{
+    @Html.ActionLink("Edit", "Edit", new { id = Model.ArticleId })
+}
