@@ -13,7 +13,8 @@ namespace RrCms.Controllers
     {
         //
         // GET: /Contact/
-                public ActionResult Index()
+        [NeedEditorRole]
+        public ActionResult Index()
         {
             using (var db = new ContactEntities())
             {

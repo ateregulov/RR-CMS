@@ -28,7 +28,7 @@
             @RenderBody()
         </section>
         <footer>
-            @Html.Partial("_ContactOnPartial")
+            @Html.Partial("_ContactsPartial", (object)ViewBag.Contacts)
         </footer>
     </div>
 </body>

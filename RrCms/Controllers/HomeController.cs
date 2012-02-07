@@ -14,11 +14,10 @@ namespace RrCms.Controllers
 {
 	public class HomeController : Controller
 	{
-	    readonly ArticleEntities _articlesDb = new ArticleEntities();
-
 		public ActionResult Index()
 		{
 		    var articles = GetLastArticles(5);
+		    ViewBag.Contacts = GetContacts();
 
             return View(articles);
 		}
@@ -76,9 +75,20 @@ namespace RrCms.Controllers
             return View(viewModel);
         }
 
+        private List<Contact> GetContacts()
+        {
+            var contactsDb = new ContactEntities();
+
+            return contactsDb.Contacts
+                .OrderBy(a => a.DisplayOrder)
+                .ToList();
+        }
+
         private List<Article> GetLastArticles(int count)
         {
-            return _articlesDb.Articles
+            var articlesDb = new ArticleEntities();
+
+            return articlesDb.Articles
                 .OrderByDescending(a => a.CreateDate)
                 .ThenBy(a => a.DisplayOrder)
                 .Where(a => a.IsDraft != true)

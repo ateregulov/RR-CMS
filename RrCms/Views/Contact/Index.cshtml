@@ -1,34 +1,42 @@
 ﻿@model IEnumerable<RrCms.Models.Contact>
 @{
     ViewBag.Title = "Список контактов";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
 }
 <h2>
     Список контактов</h2>
     <p>
     @Html.ActionLink("Создать контакт", "Create")
 </p>
-<div class="contacts">
-    @foreach (var item in Model)
-    {
-        <div class="contact">
-            <div class="contact-label">
-                @Html.LabelFor(model => item.ContactId) :
-            </div>
-            <div class="contact-field">
-                @Html.ActionLink(Convert.ToString(item.ContactId), "Details",new { id = item.ContactId })
-            </div>
-            <div class="contact-label">
-                @Html.LabelFor(model => item.DisplayOrder) :
-            </div>
-            <div class="contact-field">
-                @Html.DisplayFor(modelItem => item.DisplayOrder)
-            </div>
-            <div class="contact-label">
-                @Html.LabelFor(model => item.Text) :
-            </div>
-            <div class="contact-field">
-                @Html.DisplayFor(modelItem => item.Text)
-            </div>
-        </div>
-    }
-</div>
+<table>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            Display Order
+        </th>
+        <th>
+            Text
+        </th>
+        <th></th>
+    </tr>
+    
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContactId)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.DisplayOrder)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Text)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.ContactId }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.ContactId })
+        </td>
+    </tr>
+}
+</table>
