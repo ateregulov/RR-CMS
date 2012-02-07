@@ -1,0 +1,37 @@
+﻿@{
+    var controller = ViewContext.RouteData.Values["controller"] as string ?? "Home";
+    var action = ViewContext.RouteData.Values["action"] as string ?? "Index";
+    var page = controller.ToLower() + ":" + action.ToLower();
+    var cls = "";
+}
+<div class="navbar navbar-fixed-top">
+    <div class="navbar-inner">
+        <div class="container-fluid">
+            <a class="btn btn-navbar" data-toggle="collapse" data-target=".nav-collapse">
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+                <span class="icon-bar"></span>
+            </a>
+            @Html.ActionLink("RR-CMS", "Index", "Home", null, new { @class = "brand" })
+            <div class="nav-collapse">
+                <ul class="nav">
+                    @{ cls = (page == "home:index" ? "active" : ""); }
+                    <li class="@cls">@Html.ActionLink("Home", "Index", "Home") </li>
+
+                    @{ cls = (page == "home:about" ? "active" : ""); }
+                    <li class="@cls">@Html.ActionLink("About", "About", "Home") </li>
+
+                    <li class="divider-vertical"></li>
+
+                    @{ cls = (page == "home:contactus" ? "active" : ""); }
+                    <li class="@cls">@Html.ActionLink("Contact Us", "ContactUs", "Home") </li>
+                </ul>
+                <p class="navbar-text pull-right">
+                    @Html.Partial("_LogOnPartial")
+                    <!--Logged in as <a href="#">username</a>-->
+                </p>
+            </div>
+            <!--/.nav-collapse -->
+        </div>
+    </div>
+</div>
