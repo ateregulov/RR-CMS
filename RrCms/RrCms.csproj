@@ -83,6 +83,7 @@
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
+    <Compile Include="Controllers\FriendlyUrlController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\Models\BaseController .cs" />
     <Compile Include="Controllers\Models\NeedEditorRoleAttribute.cs" />
