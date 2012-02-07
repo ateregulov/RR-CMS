@@ -1,37 +1,79 @@
-﻿<!DOCTYPE html>
-<html>
+﻿<!DOCTYPE html PUBLIC "-W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/dtd/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" lang="en">
 <head>
-    <meta charset="utf-8" />
-    <title>@ViewBag.Title</title>
-    <link href="@Url.Content("~/Content/Site.css")" rel="stylesheet" type="text/css" />
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <link href="@Url.Content("~/favicon.ico")" rel="shortcut icon">
+    <link href="@Url.Content("~/Content/style.css")" rel="stylesheet" >
     <script src="@Url.Content("~/Scripts/jquery-1.5.1.min.js")" type="text/javascript"></script>
     <script src="@Url.Content("~/Scripts/modernizr-1.7.min.js")" type="text/javascript"></script>
+    <title>@ViewBag.Title</title>
+    <!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
 </head>
 <body>
-    <div class="page">
-        <header>
-            <div id="title">
-                <h1>My MVC Application</h1>
-            </div>
-            <div id="logindisplay">
-                @Html.Partial("_LogOnPartial")
-            </div>
-            <nav>
-                <ul id="menu">
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
-                    <li>@Html.ActionLink("About", "About", "Home")</li>
-                    <li>@Html.ActionLink("ContactUs", "ContactUs", "Home")</li>
+    <div class="container">
+        <header class="header clearfix">
+
+            <nav class="menu_main">
+                <ul>
+                    <li class="active">@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("Skins", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Samples", "Index", "Home")</li>
                 </ul>
             </nav>
         </header>
-        <section id="main">
-            @RenderBody()
-        </section>
-        <footer>
-            @{
-                Html.RenderAction("GetContacts", "Contact");
-            }
+        <div class="info">
+            <div class="col_33">
+                <div id="leftside">
+                    <div id="logotype">
+                        <div class="logo">
+                            <a href="/">
+                                <img src="@Url.Content("~/Content/images/logo.jpg")" alt="" width="200px" height="291px" /></a></div>
+                    </div>
+                    <div id="leftnav">
+                        <div id="navigation">
+                            <h2>
+                                Навигация:</h2>
+                            <ul class="nav">
+                                <li>@Html.ActionLink("Главная", "Index", "Home")</li>
+                                <li>@Html.ActionLink("Вопрос-ответ", "Details", "Article", new { id = 15 }, new { name = "Вопрос-ответ" })</li>
+                                <li>@Html.ActionLink("Судебная практика", "Details", "Article", new { id = 15 }, new { name = "Судебная практика" })</li>
+                                <li>@Html.ActionLink("Новинки законодательства", "Details", "Article", new { id = 15 }, new { name = "Новинки законодательства" })</li>
+                                <li>@Html.ActionLink("Наши достижения", "Details", "Article", new { id = 15 }, new { name = "Наши достижения" })</li>
+                                <li>@Html.ActionLink("Прейскурант", "Details", "Article", new { id = 15 }, new { name = "Прейскурант" })</li>
+                                <li>@Html.ActionLink("Услуги", "Details", "Article", new { id = 15 }, new { name = "Услуги" })</li>
+                                <li>@Html.ActionLink("Защита прав водителей", "Details", "Article", new { id = 15 }, new { name = "Защита прав водителей" })</li>
+                                <li>@Html.ActionLink("Контакты", "ContactUs", "Home")</li>
+                                <li>@Html.ActionLink("Презентация", "Details", "Article", new { id = 15 }, new { name = "Презентация" })</li>
+                            </ul>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <div class="col_66">
+                <div id="about">
+                    <article class="hero clearfix">
+                    <div class="col_100">
+                        @RenderBody()
+                    </div>
+                </article>
+                </div>
+            </div>
+            <div class="clearfix">
+            </div>
+            <footer class="footer clearfix">
+            <div class="copyright">Keep it simplest</div>
+
+            <nav class="menu_bottom">
+                <ul>
+                    <li class="active">@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.Partial("_LogOnPartial")</li>
+                    <li>@Html.ActionLink("Skins", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Samples", "Index", "Home")</li>
+                </ul>
+            </nav>
         </footer>
+        </div>
     </div>
 </body>
 </html>
