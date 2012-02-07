@@ -28,7 +28,9 @@
             @RenderBody()
         </section>
         <footer>
-            @*Html.Partial("_ContactsPartial", (object)ViewBag.Contacts)*@
+            @{
+                Html.RenderAction("GetContacts", "Contact");
+            }
         </footer>
     </div>
 </body>

@@ -17,7 +17,6 @@ namespace RrCms.Controllers
 		public ActionResult Index()
 		{
 		    var articles = GetLastArticles(5);
-		    ViewBag.Contacts = GetContacts();
 
             return View(articles);
 		}
@@ -73,15 +72,6 @@ namespace RrCms.Controllers
                 return RedirectToAction("Index");
             }
             return View(viewModel);
-        }
-
-        private List<Contact> GetContacts()
-        {
-            var contactsDb = new ContactEntities();
-
-            return contactsDb.Contacts
-                .OrderBy(a => a.DisplayOrder)
-                .ToList();
         }
 
         private List<Article> GetLastArticles(int count)

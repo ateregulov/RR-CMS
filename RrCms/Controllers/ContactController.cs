@@ -22,6 +22,16 @@ namespace RrCms.Controllers
             }
         }
 
+        public ActionResult GetContacts()
+        {
+            using (var db = new ContactEntities())
+            {
+                return View(db.Contacts
+                    .OrderBy(contact => contact.DisplayOrder)
+                    .ToList());
+            }
+        }
+
         //
         // GET: /Contact/Create
         [NeedEditorRole]

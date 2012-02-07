@@ -1,0 +1,9 @@
+﻿@model IEnumerable<RrCms.Models.Contact>
+@{
+    Layout = null;
+}
+@foreach (var item in Model)
+{
+    Output.Write(item.Text);
+    <br/>
+}
