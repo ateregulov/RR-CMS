@@ -85,7 +85,7 @@
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\FriendlyUrlController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
-    <Compile Include="Controllers\Models\BaseController .cs" />
+    <Compile Include="Controllers\Models\BaseController.cs" />
     <Compile Include="Controllers\Models\NeedEditorRoleAttribute.cs" />
     <Compile Include="Controllers\Models\FriendlyUrlRouteHandler.cs" />
     <Compile Include="Controllers\Models\RedirectManager.cs" />

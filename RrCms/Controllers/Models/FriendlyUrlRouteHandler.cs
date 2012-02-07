@@ -24,7 +24,7 @@ namespace RrCms.Controllers.Models
 				{
 					FillRequest(page.ControllerName,
 						page.ActionName ?? "GetStatic",
-						page.Id.ToString(),
+						page.ContentId.ToString(),
 						requestContext);
 				}
 			}
