@@ -350,6 +350,10 @@
     <Content Include="Views\Contact\Edit.cshtml" />
     <Content Include="Views\Contact\Index.cshtml" />
     <Content Include="Views\Contact\GetContacts.cshtml" />
+    <Content Include="Views\FriendlyUrl\Index.cshtml" />
+    <Content Include="Views\FriendlyUrl\Create.cshtml" />
+    <Content Include="Views\FriendlyUrl\Edit.cshtml" />
+    <Content Include="Views\FriendlyUrl\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

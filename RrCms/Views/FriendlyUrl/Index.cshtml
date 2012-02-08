@@ -1,0 +1,57 @@
+﻿@model IEnumerable<RrCms.Models.FriendlyUrl>
+
+@{
+    ViewBag.Title = "Admin Panel - Links";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+
+<h2>Links</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+<table>
+    <tr>
+        <th>
+            Id
+        </th>
+        <th>
+            FriendlyUrl
+        </th>
+        <th>
+            ControllerName
+        </th>
+        <th>
+            ActionName
+        </th>
+        <th>
+            ContentId
+        </th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model) {
+    <tr>
+        <td>
+            @Html.DisplayFor(modelItem => item.Id)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FriendlyUrl1)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ControllerName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ActionName)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.ContentId)
+        </td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id=item.Id }) |
+            @Html.ActionLink("Delete", "Delete", new { id=item.Id })
+        </td>
+    </tr>
+}
+
+</table>

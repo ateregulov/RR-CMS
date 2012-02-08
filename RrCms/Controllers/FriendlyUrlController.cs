@@ -1,8 +1,11 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Data;
 using System.Linq;
 using System.Web;
 using System.Web.Mvc;
+using RrCms.Controllers.Models;
+using RrCms.Models;
 
 namespace RrCms.Controllers
 {
@@ -10,23 +13,18 @@ namespace RrCms.Controllers
     {
         //
         // GET: /FriendlyUrl/
-
+        [NeedEditorRole]
         public ActionResult Index()
         {
-            return View();
-        }
-
-        //
-        // GET: /FriendlyUrl/Details/5
-
-        public ActionResult Details(int id)
-        {
-            return View();
+            using (var db = new FriendlyUrlEntities())
+            {
+                return View(db.FriendlyUrls.ToList());
+            }
         }
 
         //
         // GET: /FriendlyUrl/Create
-
+        [NeedEditorRole]
         public ActionResult Create()
         {
             return View();
@@ -34,14 +32,17 @@ namespace RrCms.Controllers
 
         //
         // POST: /FriendlyUrl/Create
-
+        [NeedEditorRole]
         [HttpPost]
-        public ActionResult Create(FormCollection collection)
+        public ActionResult Create(FriendlyUrl url)
         {
             try
             {
-                // TODO: Add insert logic here
-
+                using (var db = new FriendlyUrlEntities())
+                {
+                    db.FriendlyUrls.Add(url);
+                    db.SaveChanges();
+                }
                 return RedirectToAction("Index");
             }
             catch
@@ -52,23 +53,29 @@ namespace RrCms.Controllers
         
         //
         // GET: /FriendlyUrl/Edit/5
- 
+        [NeedEditorRole]
         public ActionResult Edit(int id)
         {
-            return View();
+            using (var db = new FriendlyUrlEntities())
+            {
+                return View(db.FriendlyUrls.Find(id));
+            }
         }
 
         //
         // POST: /FriendlyUrl/Edit/5
-
+        [NeedEditorRole]
         [HttpPost]
-        public ActionResult Edit(int id, FormCollection collection)
+        public ActionResult Edit(int id, FriendlyUrl link)
         {
             try
             {
-                // TODO: Add update logic here
- 
-                return RedirectToAction("Index");
+                using (var db = new FriendlyUrlEntities())
+                {
+                    db.Entry(link).State = EntityState.Modified;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {
@@ -78,23 +85,29 @@ namespace RrCms.Controllers
 
         //
         // GET: /FriendlyUrl/Delete/5
- 
+        [NeedEditorRole]
         public ActionResult Delete(int id)
         {
-            return View();
+            using (var db = new FriendlyUrlEntities())
+            {
+                return View(db.FriendlyUrls.Find(id));
+            }
         }
 
         //
         // POST: /FriendlyUrl/Delete/5
-
+        [NeedEditorRole]
         [HttpPost]
-        public ActionResult Delete(int id, FormCollection collection)
+        public ActionResult Delete(int id, FriendlyUrl link)
         {
             try
             {
-                // TODO: Add delete logic here
- 
-                return RedirectToAction("Index");
+                using (var db = new FriendlyUrlEntities())
+                {
+                    db.Entry(link).State = EntityState.Deleted;
+                    db.SaveChanges();
+                    return RedirectToAction("Index");
+                }
             }
             catch
             {
