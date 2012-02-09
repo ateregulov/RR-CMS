@@ -18,7 +18,6 @@
           <Property Name="MenuTitle" Type="nvarchar" />
           <Property Name="HtmlDesription" Type="nvarchar" />
           <Property Name="HtmlKeywords" Type="nvarchar" />
-          <Property Name="FriendlyUrl" Type="nvarchar" />
           <Property Name="Text" Type="nvarchar" />
           <Property Name="CreateDate" Type="datetime" Nullable="false" />
           <Property Name="EditDate" Type="datetime" Nullable="false" />
@@ -43,7 +42,6 @@
           <Property Name="MenuTitle" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
           <Property Name="HtmlDesription" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
           <Property Name="HtmlKeywords" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="FriendlyUrl" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
           <Property Name="Text" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" />
           <Property Name="EditDate" Type="DateTime" Nullable="false" />
@@ -63,7 +61,6 @@
             <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
             <ScalarProperty Name="HtmlDesription" ColumnName="HtmlDesription" />
             <ScalarProperty Name="HtmlKeywords" ColumnName="HtmlKeywords" />
-            <ScalarProperty Name="FriendlyUrl" ColumnName="FriendlyUrl" />
             <ScalarProperty Name="Text" ColumnName="Text" />
             <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
             <ScalarProperty Name="EditDate" ColumnName="EditDate" />

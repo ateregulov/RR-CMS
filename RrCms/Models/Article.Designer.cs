@@ -1,4 +1,4 @@
-﻿// Создание кода по умолчанию отключено для модели "D:\Projects\RR-CMS\RrCms\Models\Article.edmx". 
-// Чтобы включить создание кода по умолчанию, замените значение свойства "Стратегия создания кода"
-// конструктора на другое. Это свойство доступно в окне "Свойства", когда модель
-// открыта в конструкторе.
+﻿// Default code generation is disabled for model 'C:\rr-cms\RrCms\Models\Article.edmx'. 
+// To enable default code generation, change the value of the 'Code Generation Strategy' designer
+// property to an alternate value. This property is available in the Properties Window when the model is
+// open in the designer.

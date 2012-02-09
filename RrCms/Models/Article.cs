@@ -20,7 +20,6 @@ namespace RrCms.Models
         public string MenuTitle { get; set; }
         public string HtmlDesription { get; set; }
         public string HtmlKeywords { get; set; }
-        public string FriendlyUrl { get; set; }
         public string Text { get; set; }
         public System.DateTime CreateDate { get; set; }
         public System.DateTime EditDate { get; set; }

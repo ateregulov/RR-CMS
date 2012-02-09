@@ -138,6 +138,7 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>ContactModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\DataModel\Article.cs" />
     <Compile Include="Models\FeedBack.Context.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
