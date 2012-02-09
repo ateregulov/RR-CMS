@@ -1,10 +1,20 @@
 ﻿namespace RrCms.Models
 {
-    using System;
-    using System.Collections.Generic;
-
-    public partial class Article
+    public partial class Article : BasePage
     {
-        public string FriendlyUrl { get; set; }
+        protected override string ControllerName
+        {
+            get { return "Article"; }
+        }
+
+        protected override string ActionName
+        {
+            get { return "Details"; }
+        }
+
+        protected override int id
+        {
+            get { return ArticleId; }
+        }
     }
 }
