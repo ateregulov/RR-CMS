@@ -361,6 +361,11 @@
     <Content Include="Views\FriendlyUrl\Create.cshtml" />
     <Content Include="Views\FriendlyUrl\Edit.cshtml" />
     <Content Include="Views\FriendlyUrl\Delete.cshtml" />
+    <Content Include="Views\Shared\_head.cshtml" />
+    <Content Include="Views\Shared\_googleScript.cshtml" />
+    <Content Include="Views\Shared\_scripts.cshtml" />
+    <Content Include="Views\Shared\_header.cshtml" />
+    <Content Include="Views\Shared\_footer.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />

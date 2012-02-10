@@ -1,0 +1,15 @@
+﻿        <header>
+            <div id="title">
+                <h1>RR-CMS</h1>
+            </div>
+            <div id="logindisplay">
+                @Html.Partial("_LogOnPartial")
+            </div>
+            <nav>
+                <ul id="menu">
+                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("About", "About", "Home")</li>
+                    <li>@Html.ActionLink("ContactUs", "ContactUs", "Home")</li>
+                </ul>
+            </nav>
+        </header>
