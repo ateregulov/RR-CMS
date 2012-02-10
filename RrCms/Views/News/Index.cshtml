@@ -1,0 +1,59 @@
+﻿@model IList<RrCms.Models.News>
+
+@{
+    ViewBag.Title = "News";
+    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+}
+<h2>Index</h2>
+
+<p>
+    @Html.ActionLink("Create New", "Create")
+</p>
+
+@if (Model != null)
+{
+<table>
+    <tr>
+        <th>DisplayOrder</th>
+        <th>Title</th>
+        <th>MenuTitle</th>
+        <th>HtmlDesription</th>
+        <th>HtmlKeywords</th>
+        <th>FriendlyUrl</th>
+        <th>Text</th>
+        <th>TextMain</th>
+        <th>CreateDate</th>
+        <th>EditDate</th>
+        <th>EditUser</th>
+        <th>IsDraft</th>
+        <th></th>
+    </tr>
+
+@foreach (var item in Model)
+{
+    <tr>
+        <td>@Html.DisplayFor(modelItem => item.DisplayOrder)</td>
+        <td>@Html.DisplayFor(modelItem => item.Title)</td>
+        <td>@Html.DisplayFor(modelItem => item.MenuTitle)</td>
+        <td>@Html.DisplayFor(modelItem => item.HtmlDesription)</td>
+        <td>@Html.DisplayFor(modelItem => item.HtmlKeywords)</td>
+        <td>@Html.DisplayFor(modelItem => item.FriendlyUrl)</td>
+        <td>@Html.DisplayFor(modelItem => item.Text)</td>
+        <td>@Html.DisplayFor(modelItem => item.TextMain)</td>
+        <td>@Html.DisplayFor(modelItem => item.CreateDate)</td>
+        <td>@Html.DisplayFor(modelItem => item.EditDate)</td>
+        <td>@Html.DisplayFor(modelItem => item.EditUser)</td>
+        <td>@Html.DisplayFor(modelItem => item.IsDraft)</td>
+        <td>
+            @Html.ActionLink("Edit", "Edit", new { id = item.NewsId }) |
+            @Html.ActionLink("Details", "Details", new { id = item.NewsId }) |
+            @Html.ActionLink("Delete", "Delete", new { id = item.NewsId })
+        </td>
+    </tr>
+}
+</table>
+}
+else
+{
+    <p> Base news is empty </p>
+}

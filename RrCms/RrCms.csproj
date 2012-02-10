@@ -86,6 +86,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\FriendlyUrlController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
@@ -190,6 +191,25 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>FriendlyUrlModel.tt</DependentUpon>
     </Compile>
+    <Compile Include="Models\News.cs">
+      <DependentUpon>NewsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\News.Designer.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>News.edmx</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NewsModel.Context.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsModel.Context.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\NewsModel.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>NewsModel.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Models\News\NewsRepository.cs" />
     <Compile Include="Models\ViewModels\CommonViewModels.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
   </ItemGroup>
@@ -200,6 +220,7 @@
     <Content Include="App_Data\FeedBack.sdf" />
     <Content Include="App_Data\FriendlyUrl.sdf" />
     <Content Include="App_Data\Membership.sdf" />
+    <Content Include="App_Data\News.sdf" />
     <Content Include="Content\images\buttons.gif" />
     <Content Include="Content\images\toolbar.gif" />
     <Content Include="Content\jquery.cleditor.css" />
@@ -366,10 +387,29 @@
     <Content Include="Views\Shared\_scripts.cshtml" />
     <Content Include="Views\Shared\_header.cshtml" />
     <Content Include="Views\Shared\_footer.cshtml" />
+    <Content Include="Views\Home\News.cshtml" />
+    <EntityDeploy Include="Models\News.edmx">
+      <Generator>EntityModelCodeGenerator</Generator>
+      <LastGenOutput>News.Designer.cs</LastGenOutput>
+    </EntityDeploy>
+    <None Include="Models\NewsModel.Context.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NewsModel.Context.cs</LastGenOutput>
+    </None>
+    <None Include="Models\NewsModel.tt">
+      <Generator>TextTemplatingFileGenerator</Generator>
+      <LastGenOutput>NewsModel.cs</LastGenOutput>
+    </None>
+    <Content Include="Views\News\Index.cshtml" />
+    <Content Include="Views\News\Details.cshtml" />
+    <Content Include="Views\News\Create.cshtml" />
+    <Content Include="Views\News\Edit.cshtml" />
+    <Content Include="Views\News\Delete.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
   </ItemGroup>
+  <ItemGroup />
   <Import Project="$(MSBuildBinPath)\Microsoft.CSharp.targets" />
   <Import Project="$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v10.0\WebApplications\Microsoft.WebApplication.targets" />
   <!-- To modify your build process, add your task inside one of the targets below and uncomment it. 

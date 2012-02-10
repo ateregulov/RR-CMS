@@ -1,0 +1,29 @@
+﻿@using RrCms.Models;
+@model IList<News>
+
+@{
+    ViewBag.Title = "News";
+}
+
+@if (Model != null)
+{
+    foreach (var news in Model)
+    {
+        <h1>@Html.DisplayFor(m => news.Title)</h1>
+        <div>
+        @{
+             Output.Write(news.TextMain);
+        }
+        </div>
+        @Html.ActionLink("Read full", "Read", "News", null, null) <br />
+        if (User.IsInRole("Editor"))
+        {
+                @Html.ActionLink("Edit", "Edit", "News", new { id = news.NewsId }, null)
+        }
+        <hr/>
+    }
+}
+else
+{
+    <h1>Not news</h1> <hr />
+}

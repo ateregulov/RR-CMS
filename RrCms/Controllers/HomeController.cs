@@ -26,6 +26,11 @@ namespace RrCms.Controllers
 			return View();
 		}
 
+        public ActionResult News()
+        {
+            return View(NewsRepository.GetAll());
+        }
+
         public ActionResult ContactUs()
         {
             return View();
@@ -77,7 +82,7 @@ namespace RrCms.Controllers
         private List<Article> GetLastArticles(int count)
         {
             var articlesDb = new ArticleEntities();
-
+            
             return articlesDb.Articles
                 .OrderByDescending(a => a.CreateDate)
                 .ThenBy(a => a.DisplayOrder)
