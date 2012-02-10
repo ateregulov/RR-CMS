@@ -1,10 +1,10 @@
 ﻿<!DOCTYPE html>
-
 <html>
     <head>
-        <link href="@Url.Content("~/Content/AdminArea.css")" rel="stylesheet" type="text/css" />
-        <link href="@Url.Content("~/Content/jquery.cleditor.css")" rel="stylesheet" type="text/css" />
         <title>@ViewBag.Title</title>
+        <link href="@Url.Content("~/Content/AdminArea.css")" rel="stylesheet" type="text/css" />
+        <link href="@Url.Content("~/Content/jquery.cleditor.css")" rel="stylesheet" type="text/css" /> 
+        @RenderSection("scripts", false) @*место для локальных скриптов и стилей*@
     </head>
     <body>
         <header>
