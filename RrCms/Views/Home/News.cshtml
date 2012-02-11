@@ -15,7 +15,7 @@
              Output.Write(news.TextMain);
         }
         </div>
-        @Html.ActionLink("Read full", "Read", "News", null, null) <br />
+        @Html.ActionLink("Read full", "Read", "Home", new { id = news.NewsId }, null) <br />
         if (User.IsInRole("Editor"))
         {
                 @Html.ActionLink("Edit", "Edit", "News", new { id = news.NewsId }, null)

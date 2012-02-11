@@ -26,10 +26,17 @@ namespace RrCms.Controllers
 			return View();
 		}
 
+        #region News
         public ActionResult News()
         {
             return View(NewsRepository.GetAll());
         }
+
+        public ActionResult Read(int id)
+        {
+            return View(NewsRepository.GetNewByID(id));
+        }
+        #endregion
 
         public ActionResult ContactUs()
         {

@@ -19,9 +19,7 @@ namespace RrCms.Models
                         .Where(x => x.IsDraft != false)
                         .ToList();
                     if (result.Count > 0)
-                        return result;
-                    //var result = db.News.ToList();
-                    //return result;
+                        return result;                    
                 }
                 catch(Exception)
                 {
@@ -47,16 +45,17 @@ namespace RrCms.Models
             }
         }
 
-        public static bool Create(News news, string user)
+        public static bool Create(News news)
         {
             using (NewsEntities db = new NewsEntities())
             {
                 try
                 {
-                    news.CreateDate = DateTime.Now;
-                    news.EditDate = DateTime.Now;
-                    news.EditUser = user;                    
-
+                    int len = 45;
+                    if (news.Text.Length <= len)
+                        news.TextMain = news.Text.Remove(len) + " ...";
+                    else
+                        news.TextMain = news.Text;
                     db.News.Add(news);                    
                     db.SaveChanges();
                     db.Dispose();
@@ -69,17 +68,43 @@ namespace RrCms.Models
             return true;
         }
 
-        public static void Delete(News news)
+        public static bool Delete(News news)
         {
             using (NewsEntities db = new NewsEntities())
             {
                 try
                 {
-                    db.News.Remove(news);
-                    db.SaveChanges();                    
+                    db.Entry(news).State = System.Data.EntityState.Deleted;
+                    db.SaveChanges();
+                    return true;
                 }
-                catch (Exception) {}
+                catch (Exception) 
+                {
+                    return false;
+                }
             }
+        }
+
+        public static bool Edit(News news)
+        {
+            using (NewsEntities db = new NewsEntities())
+            {
+                try
+                {
+                    db.Entry(news).State = System.Data.EntityState.Modified;
+                    db.SaveChanges();
+                    return true;
+                }
+                catch (Exception)
+                {
+                    return false;
+                }
+            }
+        }
+
+        private string texttitle(string text)
+        {
+            return text;
         }
     }
 }

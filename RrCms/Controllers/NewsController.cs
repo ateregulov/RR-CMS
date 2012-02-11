@@ -46,7 +46,10 @@ namespace RrCms.Controllers
             if (ModelState.IsValid)
             {
                 news.Text = HttpUtility.UrlDecode(news.Text, System.Text.Encoding.Default);
-                if (NewsRepository.Create(news, User.Identity.Name))
+                news.CreateDate = DateTime.Now;
+                news.EditDate = DateTime.Now;
+                news.EditUser = User.Identity.Name;           
+                if (NewsRepository.Create(news))
                     return RedirectToAction("Index");
                 else
                     return View(news);
@@ -71,9 +74,13 @@ namespace RrCms.Controllers
         {
             if (ModelState.IsValid)
             {
-                //db.Entry(news).State = EntityState.Modified;
-                //db.SaveChanges();
-                return RedirectToAction("Index");
+                news.Text = HttpUtility.UrlDecode(news.Text, System.Text.Encoding.Default);
+                news.EditDate = DateTime.Now;
+                news.EditUser = User.Identity.Name;
+                if (NewsRepository.Edit(news))
+                    return RedirectToAction("Index");
+                else
+                    return View(news);
             }
             return View(news);
         }
@@ -92,9 +99,10 @@ namespace RrCms.Controllers
         [HttpPost, ActionName("Delete")]
         public ActionResult DeleteConfirmed(int id)
         {
-            News news = NewsRepository.GetNewByID(id);
-            
-            return RedirectToAction("Index");
+            if (NewsRepository.Delete(NewsRepository.GetNewByID(id)))
+                return RedirectToAction("Index");
+            else
+                return View(NewsRepository.GetNewByID(id));
         }
     }
 }

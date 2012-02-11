@@ -1,11 +1,11 @@
-﻿@model RrCms.Models.News
+﻿@using RrCms.Models;
+@model News
 
 @{
-    ViewBag.Title = "Details";
-    Layout = "~/Views/Shared/_AdminLayout.cshtml";
+    ViewBag.Title = "Read";
 }
 
-<h2>Details</h2>
+<h2>Read</h2>
 
 <fieldset>
     <legend>News</legend>
@@ -20,6 +20,9 @@
 
 </fieldset>
 <p>
-    @Html.ActionLink("Edit", "Edit", new { id=Model.NewsId }) |
-    @Html.ActionLink("Back to List", "Index")
+@if (User.IsInRole("Editor"))
+{
+    @Html.ActionLink("Edit", "Edit", "News", new { id = Model.NewsId }, null)
+}
+    @Html.ActionLink("Back to List", "News")
 </p>

@@ -4,36 +4,13 @@
   <edmx:Runtime>
     <!-- SSDL content -->
     <edmx:StorageModels>
-      <Schema Namespace="NewsModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
+    <Schema Namespace="NewsModel.Store" Alias="Self" Provider="System.Data.SqlServerCe.4.0" ProviderManifestToken="4.0" xmlns:store="http://schemas.microsoft.com/ado/2007/12/edm/EntityStoreSchemaGenerator" xmlns="http://schemas.microsoft.com/ado/2009/02/edm/ssdl">
         <EntityContainer Name="NewsModelStoreContainer">
-          <EntitySet Name="News" EntityType="NewsModel.Store.News" store:Type="Tables" store:Name="News">
-            <DefiningQuery>SELECT 
-            [News].[NewsId] AS [NewsId], 
-            [News].[DisplayOrder] AS [DisplayOrder], 
-            [News].[Title] AS [Title], 
-            [News].[MenuTitle] AS [MenuTitle], 
-            [News].[HtmlDesription] AS [HtmlDesription], 
-            [News].[HtmlKeywords] AS [HtmlKeywords], 
-            [News].[FriendlyUrl] AS [FriendlyUrl], 
-            [News].[Text] AS [Text], 
-            [News].[TextMain] AS [TextMain], 
-            [News].[CreateDate] AS [CreateDate], 
-            [News].[EditDate] AS [EditDate], 
-            [News].[EditUser] AS [EditUser], 
-            [News].[IsDraft] AS [IsDraft]
-            FROM [News] AS [News]</DefiningQuery>
-          </EntitySet>
+          <EntitySet Name="News" EntityType="NewsModel.Store.News" store:Type="Tables" />
         </EntityContainer>
-        <!--Errors Found During Generation:
-            warning 6002: The table/view 'News' does not have a primary key defined. The key has been inferred and the definition was created as a read-only table/view.
-            -->
         <EntityType Name="News">
           <Key>
             <PropertyRef Name="NewsId" />
-            <PropertyRef Name="DisplayOrder" />
-            <PropertyRef Name="CreateDate" />
-            <PropertyRef Name="EditDate" />
-            <PropertyRef Name="IsDraft" />
           </Key>
           <Property Name="NewsId" Type="int" Nullable="false" StoreGeneratedPattern="Identity" />
           <Property Name="DisplayOrder" Type="int" Nullable="false" />
@@ -49,8 +26,7 @@
           <Property Name="EditUser" Type="nvarchar" />
           <Property Name="IsDraft" Type="bit" Nullable="false" />
         </EntityType>
-      </Schema>
-    </edmx:StorageModels>
+      </Schema></edmx:StorageModels>
     <!-- CSDL content -->
     <edmx:ConceptualModels>
       <Schema Namespace="NewsModel" Alias="Self" xmlns:annotation="http://schemas.microsoft.com/ado/2009/02/edm/annotation" xmlns="http://schemas.microsoft.com/ado/2008/09/edm">
@@ -60,24 +36,20 @@
         <EntityType Name="News">
           <Key>
             <PropertyRef Name="NewsId" />
-            <PropertyRef Name="DisplayOrder" />
-            <PropertyRef Name="CreateDate" />
-            <PropertyRef Name="EditDate" />
-            <PropertyRef Name="IsDraft" />
           </Key>
-          <Property Name="NewsId" Type="Int32" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
-          <Property Name="DisplayOrder" Type="Int32" Nullable="false" />
-          <Property Name="Title" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="MenuTitle" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="HtmlDesription" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="HtmlKeywords" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="FriendlyUrl" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="Text" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="TextMain" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="CreateDate" Type="DateTime" Nullable="false" />
-          <Property Name="EditDate" Type="DateTime" Nullable="false" />
-          <Property Name="EditUser" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="IsDraft" Type="Boolean" Nullable="false" />
+          <Property Type="Int32" Name="NewsId" Nullable="false" annotation:StoreGeneratedPattern="Identity" />
+          <Property Type="Int32" Name="DisplayOrder" Nullable="false" />
+          <Property Type="String" Name="Title" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="MenuTitle" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HtmlDesription" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="HtmlKeywords" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="FriendlyUrl" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="Text" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="String" Name="TextMain" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="DateTime" Name="CreateDate" Nullable="false" />
+          <Property Type="DateTime" Name="EditDate" Nullable="false" />
+          <Property Type="String" Name="EditUser" MaxLength="4000" FixedLength="false" Unicode="true" />
+          <Property Type="Boolean" Name="IsDraft" Nullable="false" />
         </EntityType>
       </Schema>
     </edmx:ConceptualModels>
@@ -85,21 +57,25 @@
     <edmx:Mappings>
       <Mapping Space="C-S" xmlns="http://schemas.microsoft.com/ado/2008/09/mapping/cs">
         <EntityContainerMapping StorageEntityContainer="NewsModelStoreContainer" CdmEntityContainer="NewsEntities">
-          <EntitySetMapping Name="News"><EntityTypeMapping TypeName="NewsModel.News"><MappingFragment StoreEntitySet="News">
-            <ScalarProperty Name="NewsId" ColumnName="NewsId" />
-            <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
-            <ScalarProperty Name="Title" ColumnName="Title" />
-            <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
-            <ScalarProperty Name="HtmlDesription" ColumnName="HtmlDesription" />
-            <ScalarProperty Name="HtmlKeywords" ColumnName="HtmlKeywords" />
-            <ScalarProperty Name="FriendlyUrl" ColumnName="FriendlyUrl" />
-            <ScalarProperty Name="Text" ColumnName="Text" />
-            <ScalarProperty Name="TextMain" ColumnName="TextMain" />
-            <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
-            <ScalarProperty Name="EditDate" ColumnName="EditDate" />
-            <ScalarProperty Name="EditUser" ColumnName="EditUser" />
-            <ScalarProperty Name="IsDraft" ColumnName="IsDraft" />
-          </MappingFragment></EntityTypeMapping></EntitySetMapping>
+          <EntitySetMapping Name="News">
+            <EntityTypeMapping TypeName="NewsModel.News">
+              <MappingFragment StoreEntitySet="News">
+                <ScalarProperty Name="IsDraft" ColumnName="IsDraft" />
+                <ScalarProperty Name="EditUser" ColumnName="EditUser" />
+                <ScalarProperty Name="EditDate" ColumnName="EditDate" />
+                <ScalarProperty Name="CreateDate" ColumnName="CreateDate" />
+                <ScalarProperty Name="TextMain" ColumnName="TextMain" />
+                <ScalarProperty Name="Text" ColumnName="Text" />
+                <ScalarProperty Name="FriendlyUrl" ColumnName="FriendlyUrl" />
+                <ScalarProperty Name="HtmlKeywords" ColumnName="HtmlKeywords" />
+                <ScalarProperty Name="HtmlDesription" ColumnName="HtmlDesription" />
+                <ScalarProperty Name="MenuTitle" ColumnName="MenuTitle" />
+                <ScalarProperty Name="Title" ColumnName="Title" />
+                <ScalarProperty Name="DisplayOrder" ColumnName="DisplayOrder" />
+                <ScalarProperty Name="NewsId" ColumnName="NewsId" />
+              </MappingFragment>
+            </EntityTypeMapping>
+          </EntitySetMapping>
         </EntityContainerMapping>
       </Mapping>
     </edmx:Mappings>
@@ -122,7 +98,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="News">
-        <EntityTypeShape EntityType="NewsModel.News" Width="1.5" PointX="0.75" PointY="0.75" Height="3.5186979166666665" IsExpanded="true" />
+        <EntityTypeShape EntityType="NewsModel.News" Width="1.5" PointX="0.75" PointY="0.75" Height="3.5186979166666656" />
       </Diagram>
     </Diagrams>
   </Designer>
