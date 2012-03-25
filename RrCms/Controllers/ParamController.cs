@@ -13,7 +13,7 @@ namespace RrCms.Controllers
     {
         //
         // GET: /Param/
-        [NeedEditorRole]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             using (var db = new AdminParamEntities())
@@ -24,7 +24,7 @@ namespace RrCms.Controllers
         
         //
         // GET: /Param/Edit/5
-        [NeedEditorRole]
+        [Authorize(Roles = "Admin")]
         public ActionResult Edit(int id)
         {
             using (var db = new AdminParamEntities())

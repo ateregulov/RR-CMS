@@ -13,7 +13,7 @@ namespace RrCms.Controllers
     {
         //
         // GET: /FriendlyUrl/
-        [NeedEditorRole]
+        [Authorize(Roles="Admin")]
         public ActionResult Index()
         {
             using (var db = new FriendlyUrlEntities())
@@ -24,7 +24,7 @@ namespace RrCms.Controllers
 
         //
         // GET: /FriendlyUrl/Create
-        [NeedEditorRole]
+        [Authorize(Roles="Admin")]
         public ActionResult Create()
         {
             return View();
@@ -32,7 +32,7 @@ namespace RrCms.Controllers
 
         //
         // POST: /FriendlyUrl/Create
-        [NeedEditorRole]
+        [Authorize(Roles="Admin")]
         [HttpPost]
         public ActionResult Create(FriendlyUrl url)
         {
@@ -53,7 +53,7 @@ namespace RrCms.Controllers
         
         //
         // GET: /FriendlyUrl/Edit/5
-        [NeedEditorRole]
+        [Authorize(Roles="Admin")]
         public ActionResult Edit(int id)
         {
             using (var db = new FriendlyUrlEntities())
@@ -64,7 +64,7 @@ namespace RrCms.Controllers
 
         //
         // POST: /FriendlyUrl/Edit/5
-        [NeedEditorRole]
+        [Authorize(Roles="Admin")]
         [HttpPost]
         public ActionResult Edit(int id, FriendlyUrl link)
         {
@@ -85,7 +85,7 @@ namespace RrCms.Controllers
 
         //
         // GET: /FriendlyUrl/Delete/5
-        [NeedEditorRole]
+        [Authorize(Roles="Admin")]
         public ActionResult Delete(int id)
         {
             using (var db = new FriendlyUrlEntities())
@@ -96,7 +96,7 @@ namespace RrCms.Controllers
 
         //
         // POST: /FriendlyUrl/Delete/5
-        [NeedEditorRole]
+        [Authorize(Roles = "Admin")]
         [HttpPost]
         public ActionResult Delete(int id, FriendlyUrl link)
         {

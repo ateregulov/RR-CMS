@@ -13,7 +13,7 @@ namespace RrCms.Controllers
     {
         //
         // GET: /Feedback/
-        [NeedEditorRole]
+        [Authorize(Roles = "Admin")]
         public ActionResult Index()
         {
             using (var db = new FeedBackEntities())
@@ -24,7 +24,7 @@ namespace RrCms.Controllers
 
         //
         // GET: /Feedback/Delete/5
-        [NeedEditorRole]
+        [Authorize(Roles="Admin")]
         public ActionResult Delete(int id)
         {
             using (var db = new FeedBackEntities())
@@ -35,7 +35,7 @@ namespace RrCms.Controllers
 
         //
         // POST: /Feedback/Delete/5
-        [NeedEditorRole]    
+        [Authorize(Roles="Admin")]
         [HttpPost]
         public ActionResult Delete(int id, FeedBack feedBack)
         {

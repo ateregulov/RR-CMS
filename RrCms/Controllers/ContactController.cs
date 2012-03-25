@@ -11,7 +11,7 @@ namespace RrCms.Controllers
     {
         //
         // GET: /Contact/
-        [NeedEditorRole]
+        
         public ActionResult Index()
         {
             using (var db = new ContactEntities())
@@ -32,7 +32,7 @@ namespace RrCms.Controllers
 
         //
         // GET: /Contact/Create
-        [NeedEditorRole]
+        [Authorize(Roles="Admin")]
         public ActionResult Create()
         {
             return View();
@@ -40,7 +40,7 @@ namespace RrCms.Controllers
 
         //
         // GET: /Contact/Create
-        [NeedEditorRole]
+        [Authorize(Roles="Admin")]
         [HttpPost]
         public ActionResult Create(Contact contact)
         {
@@ -62,7 +62,7 @@ namespace RrCms.Controllers
 
         //
         // GET: /Article/Edit/5
-        [NeedEditorRole]
+        [Authorize(Roles="Admin")]
         public ActionResult Edit(int id)
         {
             using (var db = new ContactEntities())
@@ -73,7 +73,7 @@ namespace RrCms.Controllers
 
         //
         // POST: /Article/Edit/5
-        [NeedEditorRole]
+        [Authorize(Roles="Admin")]
         [HttpPost]
         public ActionResult Edit(int id, Contact contact)
         {
@@ -95,7 +95,7 @@ namespace RrCms.Controllers
 
         //
         // GET: /Article/Delete/5
-        [NeedEditorRole]
+        [Authorize(Roles = "Admin")]
         public ActionResult Delete(int id)
         {
             using (var db = new ContactEntities())
@@ -106,7 +106,7 @@ namespace RrCms.Controllers
 
         //
         // POST: /Article/Delete/5
-        [NeedEditorRole]
+        [Authorize(Roles="Admin")]
         [HttpPost]
         public ActionResult Delete(int id, Contact contact)
         {
