@@ -1,5 +1,9 @@
-﻿        <footer>
-            @{
-                Html.RenderAction("GetContacts", "Contact");
-            }
+﻿<footer class="footer clearfix">
+            <div class="copyright">@Html.Action("GetContacts", "Contact")</div>
+
+            <nav class="menu_bottom">
+                <ul>
+                    <li>@Html.Partial("_LogOnPartial")</li>
+                </ul>
+            </nav>
         </footer>

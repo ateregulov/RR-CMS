@@ -1,10 +1,14 @@
-﻿        <meta charset="utf-8" />
-@if (!string.IsNullOrWhiteSpace(@ViewBag.Title)){
-        <title>@ViewBag.Title</title>}
-@if (!string.IsNullOrWhiteSpace(@ViewBag.Keywords)){
-        <meta name="keywords" content="@ViewBag.Keywords" />}
-@if (!string.IsNullOrWhiteSpace(@ViewBag.Description)){
-        <meta name="description" content="@ViewBag.Description" />}
-        @*<link rel="icon" href="/favicon.ico" type="image/x-icon">*@
-        @*<link rel="shortcut icon" href="/favicon.ico" type="image/x-icon">*@
-        @*<link rel="icon" type="image/gif" href="../../favicon.gif">*@
+﻿<meta charset="utf-8" />
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<link href="@Url.Content("~/favicon.ico")" rel="shortcut icon">
+@if (!string.IsNullOrWhiteSpace(@ViewBag.Title))
+{
+    <title>@ViewBag.Title</title>}
+@if (!string.IsNullOrWhiteSpace(@ViewBag.Keywords))
+{
+    <meta name="keywords" content="@ViewBag.Keywords" />}
+@if (!string.IsNullOrWhiteSpace(@ViewBag.Description))
+{
+    <meta name="description" content="@ViewBag.Description" />}
+<!--[if lt IE 9]><script src="http://html5shiv.googlecode.com/svn/trunk/html5.js"></script><![endif]-->
+

@@ -23,7 +23,7 @@ namespace RrCms.Controllers
 
         //
         // GET: /Article/Create
-        [Authorize(Roles="Admin")]
+        [Authorize(Roles="Editor, Admin")]
         public ActionResult Create()
         {
             return View();
@@ -31,10 +31,11 @@ namespace RrCms.Controllers
 
         //
         // POST: /Article/Create
-        [Authorize(Roles="Admin")]
+        [Authorize(Roles = "Editor, Admin")]
         [HttpPost]
         public ActionResult Create(Article article)
         {
+            string f = article.FriendlyUrl;
             try
             {
                 using (var db = new ArticleEntities())
@@ -45,6 +46,7 @@ namespace RrCms.Controllers
                     article.Text = HttpUtility.UrlDecode(article.Text, System.Text.Encoding.Default);
                     db.Articles.Add(article);
                     db.SaveChanges();
+                    article.FriendlyUrl = f;
                 }
                 return RedirectToAction("Index");
             }
@@ -67,7 +69,7 @@ namespace RrCms.Controllers
 
         //
         // GET: /Article/Edit/5
-        [Authorize(Roles="Admin")]
+        [Authorize(Roles = "Editor, Admin")]
         public ActionResult Edit(int id)
         {
             using (var db = new ArticleEntities())
@@ -78,7 +80,7 @@ namespace RrCms.Controllers
 
         //
         // POST: /Article/Edit/5
-        [Authorize(Roles="Admin")]
+        [Authorize(Roles = "Editor, Admin")]
         [HttpPost]
         public ActionResult Edit(int id, Article article)
         {
@@ -102,7 +104,7 @@ namespace RrCms.Controllers
 
         //
         // GET: /Article/Delete/5
-        [Authorize(Roles="Admin")]
+        [Authorize(Roles = "Editor, Admin")]
         public ActionResult Delete(int id)
         {
             using (var db = new ArticleEntities())
@@ -113,7 +115,7 @@ namespace RrCms.Controllers
 
         //
         // POST: /Article/Delete/5
-        [Authorize(Roles = "Admin")]
+        [Authorize(Roles = "Editor, Admin")]
         [HttpPost]
         public ActionResult Delete(int id, Article article)
         {

@@ -1,9 +1,9 @@
 ﻿@if(Request.IsAuthenticated) {
-    <text><strong>@User.Identity.Name</strong>
+    <text>Вы вошли как <strong>@User.Identity.Name</strong>
     @(User.IsInRole("Editor") ? "(Editor)" : String.Empty)
-    [ @Html.ActionLink("Admin Panel", "Index", "Article") ]
-    [ @Html.ActionLink("Log Off", "LogOff", "Account") ]</text>
+    [ @Html.ActionLink("Панель управления", "Index", "Article") ]
+    [ @Html.ActionLink("Выход", "LogOff", "Account") ]</text>
 }
 else {
-    @:[ @Html.ActionLink("Log On", "LogOn", "Account") ]
+    @:[ @Html.ActionLink("Вход", "LogOn", "Account") ]
 }

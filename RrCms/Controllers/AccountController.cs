@@ -43,7 +43,7 @@ namespace RrCms.Controllers
 				}
 				else
 				{
-					ModelState.AddModelError("", "The user name or password provided is incorrect.");
+					ModelState.AddModelError("", "Пароль не правильный.");
 				}
 			}
 
@@ -64,37 +64,37 @@ namespace RrCms.Controllers
 		//
 		// GET: /Account/Register
 
-		public ActionResult Register()
-		{
-			return View();
-		}
+        //public ActionResult Register()
+        //{
+        //    return View();
+        //}
 
-		//
-		// POST: /Account/Register
+        ////
+        //// POST: /Account/Register
 
-		[HttpPost]
-		public ActionResult Register(RegisterModel model)
-		{
-			if (ModelState.IsValid)
-			{
-				// Attempt to register the user
-				MembershipCreateStatus createStatus;
-				Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
+        //[HttpPost]
+        //public ActionResult Register(RegisterModel model)
+        //{
+        //    if (ModelState.IsValid)
+        //    {
+        //        // Attempt to register the user
+        //        MembershipCreateStatus createStatus;
+        //        Membership.CreateUser(model.UserName, model.Password, model.Email, null, null, true, null, out createStatus);
 
-				if (createStatus == MembershipCreateStatus.Success)
-				{
-					FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
-					return RedirectToAction("Index", "Home");
-				}
-				else
-				{
-					ModelState.AddModelError("", ErrorCodeToString(createStatus));
-				}
-			}
+        //        if (createStatus == MembershipCreateStatus.Success)
+        //        {
+        //            FormsAuthentication.SetAuthCookie(model.UserName, false /* createPersistentCookie */);
+        //            return RedirectToAction("Index", "Home");
+        //        }
+        //        else
+        //        {
+        //            ModelState.AddModelError("", ErrorCodeToString(createStatus));
+        //        }
+        //    }
 
-			// If we got this far, something failed, redisplay form
-			return View(model);
-		}
+        //    // If we got this far, something failed, redisplay form
+        //    return View(model);
+        //}
 
 		//
 		// GET: /Account/ChangePassword

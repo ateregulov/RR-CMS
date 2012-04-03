@@ -10,7 +10,7 @@ using RrCms.Controllers.Models;
 
 namespace RrCms.Controllers
 {
-    [Authorize(Roles = "Admin")]
+    [Authorize(Roles = "Admin, Editor")]
     public class NewsController : Controller
     {        
         //

@@ -1,0 +1,25 @@
+﻿@model IEnumerable<RrCms.Models.Article>
+
+@{
+    ViewBag.Title = "Index";
+}
+
+@if (User.IsInRole("Editor"))
+{
+
+<p>
+    @Html.ActionLink("Добавить статью", "Create", "Article")
+</p>
+}
+
+
+@foreach (var item in Model) {
+    if (item.IsDraft != true && item.MenuTitle != null && !string.IsNullOrWhiteSpace(item.MenuTitle))
+    {
+        <li><a href="/@item.FriendlyUrl" >@item.MenuTitle</a></li>
+           
+    }
+
+}
+
+

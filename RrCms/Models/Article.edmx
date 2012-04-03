@@ -42,7 +42,7 @@
           <Property Name="MenuTitle" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
           <Property Name="HtmlDesription" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
           <Property Name="HtmlKeywords" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
-          <Property Name="Text" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
+          <Property Name="Text" Type="String" MaxLength="Max" Unicode="true" />
           <Property Name="CreateDate" Type="DateTime" Nullable="false" />
           <Property Name="EditDate" Type="DateTime" Nullable="false" />
           <Property Name="EditUser" Type="String" MaxLength="4000" Unicode="true" FixedLength="false" />
@@ -89,7 +89,7 @@
     <!-- Diagram content (shape and connector positions) -->
     <Diagrams>
       <Diagram Name="Article">
-        <EntityTypeShape EntityType="ArticleModel.Article" Width="1.5" PointX="0.75" PointY="0.75" Height="3.3263964843749996" IsExpanded="true" />
+        <EntityTypeShape EntityType="ArticleModel.Article" Width="1.5" PointX="0.75" PointY="0.75" Height="3.1540950520833331" IsExpanded="true" />
       </Diagram>
     </Diagrams>
   </Designer>

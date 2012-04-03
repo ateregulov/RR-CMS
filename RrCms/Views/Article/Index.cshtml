@@ -28,7 +28,7 @@
     <tr>
         <td>@Html.DisplayFor(modelItem => item.ArticleId)</td>
         <td>@Html.DisplayFor(modelItem => item.DisplayOrder)</td>
-        <td>@Html.ActionLink(item.Title, "Details", new { id = item.ArticleId }, new { title = "Show article" })</td>
+        <td>@Html.ActionLink(item.Title ?? "Пусто", "Details", new { id = item.ArticleId }, new { title = "Show article" })</td>
         <td>@Html.DisplayFor(modelItem => item.MenuTitle)</td>
         <td>@Html.DisplayFor(modelItem => item.FriendlyUrl)</td>
         <td>@Html.DisplayFor(modelItem => item.CreateDate)</td>

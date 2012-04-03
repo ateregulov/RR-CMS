@@ -1,17 +1,28 @@
 <!DOCTYPE html>
 <html>
-    <head>
-@Html.Partial("_head")
-@Html.Partial("_scripts")  @*общие скрипты, стили счетчики*@
-@RenderSection("scripts", false) @*место для локальных скриптов и стилей*@
-    </head>
+<head>
+    @Html.Partial("_head")
+    @Html.Partial("_scripts") @*общие скрипты, стили счетчики*@
+    @RenderSection("scripts", false) @*место для локальных скриптов и стилей*@
+</head>
 <body>
-    <div class="page">
-@Html.Partial("_header")
-        <section id="main">
-            @RenderBody()
-        </section>
-@Html.Partial("_footer")
+    <div class="container">
+        @Html.Partial("_header")
+        <div class="info">
+            @Html.Partial("_leftside")
+            <div class="col_66">
+                <div id="about">
+                    <article class="hero clearfix">
+                    <div class="col_100">
+                        @RenderBody()
+                    </div>
+                </article>
+                </div>
+            </div>
+            <div class="clearfix">
+            </div>
+            @Html.Partial("_footer")
+        </div>
     </div>
 </body>
 </html>

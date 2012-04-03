@@ -67,14 +67,17 @@ namespace RrCms.Models
                     //добавление    
                     else
                     {
-                        FriendlyUrl riendlyUrl = new FriendlyUrl()
+                        if (this.id != 0)
                         {
-                            FriendlyUrl1 = value,
-                            ContentId = this.id,
-                            ControllerName = ControllerName,
-                            ActionName = ActionName
-                        };
-                        ctx.FriendlyUrls.Add(riendlyUrl);
+                            FriendlyUrl friendlyUrl = new FriendlyUrl()
+                            {
+                                FriendlyUrl1 = value,
+                                ContentId = this.id,
+                                ControllerName = ControllerName,
+                                ActionName = ActionName
+                            };
+                            ctx.FriendlyUrls.Add(friendlyUrl);
+                        }
                     }
                     ctx.SaveChanges();
                 }

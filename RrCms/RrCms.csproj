@@ -86,6 +86,7 @@
     <Compile Include="Controllers\AccountController.cs" />
     <Compile Include="Controllers\ArticleController.cs" />
     <Compile Include="Controllers\ContactController.cs" />
+    <Compile Include="Controllers\MenuController.cs" />
     <Compile Include="Controllers\NewsController.cs" />
     <Compile Include="Controllers\FeedbackController.cs" />
     <Compile Include="Controllers\FriendlyUrlController.cs" />
@@ -224,6 +225,7 @@
     <Content Include="Content\images\logo.jpg" />
     <Content Include="Content\images\toolbar.gif" />
     <Content Include="Content\jquery.cleditor.css" />
+    <Content Include="Content\images\map_temp.jpg" />
     <Content Include="Content\style.css" />
     <Content Include="Content\themes\base\images\ui-bg_flat_0_aaaaaa_40x100.png" />
     <Content Include="Content\themes\base\images\ui-bg_flat_75_ffffff_40x100.png" />
@@ -369,7 +371,9 @@
     <Content Include="Views\Article\Create.cshtml" />
     <Content Include="Views\Article\Edit.cshtml" />
     <Content Include="Views\Article\Delete.cshtml" />
-    <Content Include="Views\Article\Details.cshtml" />
+    <Content Include="Views\Article\Details.cshtml">
+      <CopyToOutputDirectory>Always</CopyToOutputDirectory>
+    </Content>
     <Content Include="Views\Feedback\Index.cshtml" />
     <Content Include="Views\Feedback\Delete.cshtml" />
     <Content Include="Views\Param\Index.cshtml" />
@@ -407,6 +411,8 @@
     <Content Include="Views\News\Edit.cshtml" />
     <Content Include="Views\News\Delete.cshtml" />
     <Content Include="Views\Home\Read.cshtml" />
+    <Content Include="Views\Shared\_leftside.cshtml" />
+    <Content Include="Views\Menu\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Service Include="{508349B6-6B84-4DF5-91F0-309BEEBAD82D}" />
@@ -429,7 +435,7 @@
         <WebProjectProperties>
           <UseIIS>False</UseIIS>
           <AutoAssignPort>True</AutoAssignPort>
-          <DevelopmentServerPort>2812</DevelopmentServerPort>
+          <DevelopmentServerPort>51575</DevelopmentServerPort>
           <DevelopmentServerVPath>/</DevelopmentServerVPath>
           <IISUrl>
           </IISUrl>

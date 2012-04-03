@@ -16,9 +16,7 @@ namespace RrCms.Controllers
 	{
 		public ActionResult Index()
 		{
-		    var articles = GetLastArticles(5);
-
-            return View(articles);
+            return Redirect("/главная");
 		}
 
 		public ActionResult About()
