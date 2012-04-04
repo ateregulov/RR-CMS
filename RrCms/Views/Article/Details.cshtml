@@ -19,5 +19,6 @@
 </div>
 @if (User.IsInRole("Editor"))
 {
-    @Html.ActionLink("Edit", "Edit", new { id = Model.ArticleId })
+    @Html.ActionLink("Редактировать", "Edit", new { id = Model.ArticleId })
+    <br />
 }

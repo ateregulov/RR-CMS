@@ -7,17 +7,18 @@
         @RenderSection("scripts", false) @*место для локальных скриптов и стилей*@
     </head>
     <body>
-        <header>
-            <h1>Admin Panel</h1>
+        <header><a href="/">
+                    
+            <h1>На главную</h1></a>
             <nav>
                 <ul id="menu">
-                    <li>@Html.ActionLink("Articles", "Index", "Article")</li>
-                    <li>@Html.ActionLink("News", "Index", "News")</li>
-                    <li>@Html.ActionLink("Feedback", "Index", "Feedback")</li>
-                    <li>@Html.ActionLink("Parameters", "Index", "Param")</li>
-                    <li>@Html.ActionLink("Contacts", "Index", "Contact")</li>
-                    <li>@Html.ActionLink("Links", "Index", "FriendlyUrl")</li>
-                    <li>@Html.ActionLink("Home", "Index", "Home")</li>
+                    <li>@Html.ActionLink("Статьи", "Index", "Article")</li>
+                    <li>@Html.ActionLink("Контакты", "Index", "Contact")</li>
+                    <li>@Html.ActionLink("Новости", "Index", "News")</li>
+                    <li>@Html.ActionLink("Отзывы", "Index", "Feedback")</li>
+                    <li>@Html.ActionLink("Параметры", "Index", "Param")</li>
+                    <li>@Html.ActionLink("Ссылки", "Index", "FriendlyUrl")</li>
+                    
                 </ul>
             </nav>
         </header>

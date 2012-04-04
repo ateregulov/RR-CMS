@@ -16,5 +16,23 @@
         {
             get { return ArticleId; }
         }
+
+        public void AddUrl(int id, string url)
+        {
+            using (var ctx = new FriendlyUrlEntities())
+            {
+
+                FriendlyUrl friendlyUrl = new FriendlyUrl()
+                {
+                    FriendlyUrl1 = this.FriendlyUrl,
+                    ContentId = this.id,
+                    ControllerName = "Article",
+                    ActionName = "Details"
+                };
+                ctx.FriendlyUrls.Add(friendlyUrl);
+                ctx.SaveChanges();
+            }
+
+        }
     }
 }

@@ -35,7 +35,7 @@ namespace RrCms.Controllers
         [HttpPost]
         public ActionResult Create(Article article)
         {
-            string f = article.FriendlyUrl;
+            string url = article.FriendlyUrl;
             try
             {
                 using (var db = new ArticleEntities())
@@ -46,7 +46,7 @@ namespace RrCms.Controllers
                     article.Text = HttpUtility.UrlDecode(article.Text, System.Text.Encoding.Default);
                     db.Articles.Add(article);
                     db.SaveChanges();
-                    article.FriendlyUrl = f;
+                    article.AddUrl(article.ArticleId, url);
                 }
                 return RedirectToAction("Index");
             }

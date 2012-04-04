@@ -66,19 +66,19 @@ namespace RrCms.Models
                     }
                     //добавление    
                     else
-                    {
-                        if (this.id != 0)
-                        {
-                            FriendlyUrl friendlyUrl = new FriendlyUrl()
-                            {
-                                FriendlyUrl1 = value,
-                                ContentId = this.id,
-                                ControllerName = ControllerName,
-                                ActionName = ActionName
-                            };
-                            ctx.FriendlyUrls.Add(friendlyUrl);
-                        }
-                    }
+                    //{
+                    //    if (this.id != 0)
+                    //    {
+                    //        FriendlyUrl friendlyUrl = new FriendlyUrl()
+                    //        {
+                    //            FriendlyUrl1 = value,
+                    //            ContentId = this.id,
+                    //            ControllerName = ControllerName,
+                    //            ActionName = ActionName
+                    //        };
+                    //        ctx.FriendlyUrls.Add(friendlyUrl);
+                    //    }
+                    //}
                     ctx.SaveChanges();
                 }
             }
