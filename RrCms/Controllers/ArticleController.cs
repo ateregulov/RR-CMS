@@ -46,7 +46,10 @@ namespace RrCms.Controllers
                     article.Text = HttpUtility.UrlDecode(article.Text, System.Text.Encoding.Default);
                     db.Articles.Add(article);
                     db.SaveChanges();
-                    article.AddUrl(article.ArticleId, url);
+                    
+                    article.AddUrl(article.ArticleId, article.FriendlyUrl);
+                    db.Entry(article).State = EntityState.Modified;
+                    db.SaveChanges();
                 }
                 return RedirectToAction("Index");
             }

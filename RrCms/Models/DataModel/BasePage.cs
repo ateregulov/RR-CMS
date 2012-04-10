@@ -30,7 +30,7 @@ namespace RrCms.Models
                 using (var ctx = new FriendlyUrlEntities())
                 {
                     var row = ctx.FriendlyUrls.Where
-                        (c => c.ContentId == this.id&&
+                        (c => c.ContentId == this.id &&
                         c.ControllerName == ControllerName
                         && c.ActionName == ActionName).
                         //сортировка нужна на случай если в втаблице будет несколько записей относящихся к данной записи
@@ -55,10 +55,10 @@ namespace RrCms.Models
                     if (ctx.FriendlyUrls.Any(c => c.ContentId == this.id))
                     {
                         var row = ctx.FriendlyUrls.Where
-                        (c => c.ContentId == this.id&&
+                        (c => c.ContentId == this.id &&
                         c.ControllerName == ControllerName
                         && c.ActionName == ActionName).
-                        //сортировка нужна на случай если в втаблице будет несколько записей относящихся к данной записи
+                            //сортировка нужна на случай если в втаблице будет несколько записей относящихся к данной записи
                         OrderByDescending(c => c.Id).FirstOrDefault();
                         row.FriendlyUrl1 = value;
                         row.ControllerName = ControllerName;
@@ -66,19 +66,18 @@ namespace RrCms.Models
                     }
                     //добавление    
                     else
-                    //{
-                    //    if (this.id != 0)
-                    //    {
-                    //        FriendlyUrl friendlyUrl = new FriendlyUrl()
-                    //        {
-                    //            FriendlyUrl1 = value,
-                    //            ContentId = this.id,
-                    //            ControllerName = ControllerName,
-                    //            ActionName = ActionName
-                    //        };
-                    //        ctx.FriendlyUrls.Add(friendlyUrl);
-                    //    }
-                    //}
+                    {
+
+                        FriendlyUrl friendlyUrl = new FriendlyUrl()
+                        {
+                            FriendlyUrl1 = value,
+                            ContentId = this.id,
+                            ControllerName = ControllerName,
+                            ActionName = ActionName
+                        };
+                        ctx.FriendlyUrls.Add(friendlyUrl);
+
+                    }
                     ctx.SaveChanges();
                 }
             }
