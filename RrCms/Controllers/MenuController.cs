@@ -16,8 +16,14 @@ namespace RrCms.Controllers
         {
             using (var db = new ArticleEntities())
             {
-                return PartialView(db.Articles.OrderBy(x=>x.DisplayOrder).ToList());
+                var articles = db.Articles.OrderBy(x => x.DisplayOrder).ToList();
+                foreach (Article article in articles)
+                {
+                    article.FriendlyUrl = article.GetUrl(article.ArticleId);
+                }
+                return PartialView(articles);
             }
+                       
         }
 
     }

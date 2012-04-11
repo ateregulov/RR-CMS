@@ -12,18 +12,23 @@ namespace RrCms.Controllers
     {
         //
         // GET: /Article/
-        
+
         public ActionResult Index()
         {
             using (var db = new ArticleEntities())
             {
-                return View(db.Articles.ToList());
+                var articles = db.Articles.OrderBy(x=>x.DisplayOrder).ToList();
+                foreach (Article article in articles)
+                {
+                    article.FriendlyUrl = article.GetUrl(article.ArticleId);
+                }
+                return View(articles);
             }
         }
 
         //
         // GET: /Article/Create
-        [Authorize(Roles="Editor, Admin")]
+        [Authorize(Roles = "Editor, Admin")]
         public ActionResult Create()
         {
             return View();
@@ -35,7 +40,7 @@ namespace RrCms.Controllers
         [HttpPost]
         public ActionResult Create(Article article)
         {
-            string url = article.FriendlyUrl;
+
             try
             {
                 using (var db = new ArticleEntities())
@@ -46,7 +51,7 @@ namespace RrCms.Controllers
                     article.Text = HttpUtility.UrlDecode(article.Text, System.Text.Encoding.Default);
                     db.Articles.Add(article);
                     db.SaveChanges();
-                    
+
                     article.AddUrl(article.ArticleId, article.FriendlyUrl);
                     db.Entry(article).State = EntityState.Modified;
                     db.SaveChanges();
@@ -66,7 +71,9 @@ namespace RrCms.Controllers
         {
             using (var db = new ArticleEntities())
             {
-                return View(db.Articles.Find(id));
+                Article article = db.Articles.Find(id);
+                article.FriendlyUrl = article.GetUrl(id);
+                return View(article);
             }
         }
 
@@ -77,7 +84,9 @@ namespace RrCms.Controllers
         {
             using (var db = new ArticleEntities())
             {
-                return View(db.Articles.Find(id));
+                Article article = db.Articles.Find(id);
+                article.FriendlyUrl = article.GetUrl(id);
+                return View(article);
             }
         }
 
@@ -95,6 +104,7 @@ namespace RrCms.Controllers
                     article.EditUser = User.Identity.Name;
                     article.Text = HttpUtility.UrlDecode(article.Text, System.Text.Encoding.Default);
                     db.Entry(article).State = EntityState.Modified;
+                    article.AddUrl(id, article.FriendlyUrl);
                     db.SaveChanges();
                     return RedirectToAction("Index");
                 }
@@ -126,6 +136,7 @@ namespace RrCms.Controllers
             {
                 using (var db = new ArticleEntities())
                 {
+                    article.AddUrl(id, "");
                     db.Entry(article).State = EntityState.Deleted;
                     db.SaveChanges();
                     return RedirectToAction("Index");
